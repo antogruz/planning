@@ -56,6 +56,34 @@ def threeWithSameDistribution():
 register(threeWithSameDistribution)
 
 
+def threeWithDifferentMotivation():
+    p1 = People([True, True, True], name="p1", motivation_score=3)
+    p2 = People([True, True, True], name="p2", motivation_score=2)
+    p3 = People([True, True, True], name="p3", motivation_score=1)
+    result = planning([p1, p2, p3], 3)
+    assert number_of_working(p1, result) == 3
+    assert number_of_working(p2, result) == 2
+    assert number_of_working(p3, result) == 1
+register(threeWithDifferentMotivation)
+
+
+def fivePlanning():
+    all_true = [True for i in range(0,6)]
+    p1 = People(all_true, name="p1", motivation_score=3)
+    p2 = People(all_true, name="p2", motivation_score=2)
+    p3 = People(all_true, name="p3", motivation_score=1)
+    p4 = People(all_true, name="p4", motivation_score=2)
+    p5 = People(all_true, name="p5", motivation_score=1)
+    result = planning([p1, p2, p3, p4, p5], 6)
+    assert number_of_working(p1, result) >= number_of_working(p2, result)
+    assert number_of_working(p1, result) >= number_of_working(p4, result)
+    assert number_of_working(p2, result) >= number_of_working(p3, result)
+    assert number_of_working(p4, result) >= number_of_working(p3, result)
+    assert number_of_working(p2, result) >= number_of_working(p5, result)
+    assert number_of_working(p4, result) >= number_of_working(p5, result)
+register(fivePlanning)
+
+
 def tests():
     for f in functions:
         print f.__name__
