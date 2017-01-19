@@ -1,7 +1,8 @@
 class People:
-    def __init__(self, dispos):
-        self.dispos = dispos
+    def __init__(self, availability, name=""):
+        self.availability = availability
+        self.name = name
 
     def is_available(self, moment):
-        return self.dispos[moment]
+        return self.availability[moment]
 
