@@ -32,11 +32,11 @@ def oneNeverAvailable():
     assert len(result[1]) == 0
 register(oneNeverAvailable)
 
-def threeAlwaysAvailable():
+def twoAlwaysAvailable():
     p = People([True])
     result = planning([p, p], 1, 1)
     assert len(result[0]) == 1
-register(threeAlwaysAvailable)
+register(twoAlwaysAvailable)
 
 
 def tests():
