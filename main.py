@@ -13,8 +13,8 @@ def get_peoples():
         for row in reader:
             name = row[0]
             team = row[1]
-            # motivation = row[2]
-            result.append(People(teams_availability[team], name=name))
+            motivation = int(row[2])
+            result.append(People(teams_availability[team], name=name, motivation_score=motivation))
     return result
 
 
@@ -32,13 +32,16 @@ def get_teams_availability():
 
 
 def print_planning(planning):
-    key = 1
-    for moment in planning:
-        workers = ""
-        for worker in moment:
-            workers += worker.name+" "
-        print(key, workers)
-        key += 1
+    with open('data/results.csv', 'wb') as csvfile:
+        writer = csv.writer(csvfile)
+        key = 1
+        for moment in planning:
+            workers = ""
+            for worker in moment:
+                workers += worker.name+" "
+            writer.writerow((key, workers))
+            key += 1
+
 
 if __name__ == '__main__':
     peoples = get_peoples()

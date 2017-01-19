@@ -68,7 +68,7 @@ register(threeWithDifferentMotivation)
 
 
 def fivePlanning():
-    all_true = [True for i in range(0,6)]
+    all_true = [True for i in range(0, 6)]
     p1 = People(all_true, name="p1", motivation_score=3)
     p2 = People(all_true, name="p2", motivation_score=2)
     p3 = People(all_true, name="p3", motivation_score=1)
