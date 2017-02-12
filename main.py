@@ -26,7 +26,12 @@ def get_teams_availability():
         for row in reader:
             teams_availability[row[0]] = [True for i in range(0, planning_length)]
             for not_availability in row[1].split(','):
+                moment = int(not_availability)
+                if (moment - 2) >= 0:
+                    teams_availability[row[0]][int(not_availability) - 2] = False
                 teams_availability[row[0]][int(not_availability) - 1] = False
+                if moment < planning_length:
+                    teams_availability[row[0]][int(not_availability)] = False
     result = []
     return result, teams_availability
 
